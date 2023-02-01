@@ -43,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    // basename="/odin-blog"
+    // basename="/odin-blog-cms"
     <HashRouter>
       <div className="container">
         <Nav handleCurrentPage={handleCurrentPage} />
