@@ -12,6 +12,9 @@ function Nav() {
         <Link to="/login" className="nav-link">
           <li>Log In</li>
         </Link>
+        <Link to="/signup" className="nav-link">
+          <li>Sign Up</li>
+        </Link>
       </ul>
     </nav>
   );
