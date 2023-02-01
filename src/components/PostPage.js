@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import '../styles/PostPage.css';
 
@@ -101,6 +102,15 @@ function PostPage({ postid }) {
         <div className="post-subcontainer">
           <h1 className="post-title">{post.title}</h1>
           <div className="post-info">By <b>{post.author.name}</b> at {dateFormatter(post.timestamp)}</div>
+          <div className="post-status" style={post.is_published ? {color: "lightseagreen"} : {color: "coral"}}>{post.is_published ? "Published" : "Unpublished"}</div>
+          <div className="post-edit-container">
+            <Link to="/post/update">
+              <button className="post-update-button">Update post</button>
+            </Link>
+            <Link to="/post/delete">
+              <button className="post-delete-button">Delete post</button>
+            </Link>
+          </div>
           <hr />
           <div className="post-content">{post.content}</div>
           <hr />
