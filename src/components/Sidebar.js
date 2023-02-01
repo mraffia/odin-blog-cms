@@ -7,26 +7,26 @@ function Sidebar({ currentPage, handleCurrentPage }) {
   return (
     <div className="sidebar-container">
       <ul className="sidebar-nav">
-        <li className="sidebar-nav-menu" onClick={() => handleCurrentPage('All Posts')} style={currentPage === "All Posts" ? {"backgroundColor": "rgb(200, 200, 200)"} : {}}>
-          <Link to="/" className="sidebar-nav-link">
+        <li className="sidebar-nav-menu">
+          <Link to="/" className="sidebar-nav-link" onClick={() => handleCurrentPage('All Posts')}>
             All Posts
           </Link>
         </li>
-        <li className="sidebar-nav-menu" onClick={() => handleCurrentPage('Published Posts')} style={currentPage === "Published Posts" ? {"backgroundColor": "rgb(200, 200, 200)"} : {}}>
-          <Link to="/" className="sidebar-nav-link">
+        <li className="sidebar-nav-menu">
+          <Link to="/" className="sidebar-nav-link" onClick={() => handleCurrentPage('Published Posts')}>
             Published Posts
           </Link>
         </li>
-        <li className="sidebar-nav-menu" onClick={() => handleCurrentPage('Unpublished Posts')} style={currentPage === "Unpublished Posts" ? {"backgroundColor": "rgb(200, 200, 200)"} : {}}>
-          <Link to="/" className="sidebar-nav-link">
+        <li className="sidebar-nav-menu">
+          <Link to="/" className="sidebar-nav-link" onClick={() => handleCurrentPage('Unpublished Posts')}>
             Unpublished Posts
           </Link>
         </li>
         <li className="sidebar-nav-line">
           <hr />
         </li>
-        <li className="sidebar-nav-menu" onClick={() => handleCurrentPage('Create New Posts')} style={currentPage === "Create New Posts" ? {"backgroundColor": "rgb(200, 200, 200)"} : {}}>
-          <Link to="/post/create" className="sidebar-nav-link">
+        <li className="sidebar-nav-menu">
+          <Link to="/post/create" className="sidebar-nav-link" onClick={() => handleCurrentPage('Create New Posts')}>
             Create New Post
           </Link>
         </li>
