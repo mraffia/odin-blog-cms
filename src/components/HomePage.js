@@ -19,7 +19,7 @@ function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) 
 
   return (
     <div className="home-container">
-      <h1>{currentPage}</h1>
+      <h1 className="home-title">{currentPage}</h1>
       {isError && <div className="error-message">Something went wrong...</div>}
       {isLoading ? (
         <ThreeDots 
