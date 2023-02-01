@@ -54,8 +54,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
               <Route path="/post" element={<PostPage postid={postid} />} />
-              {/* <Route path="/post/create" element={<CreatePostPage />} />
-              <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
+              <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
+              {/* <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
               <Route path="/post/update" element={<DeletePostPage postid={postid} />} />
               <Route path="/login" element={<LoginPage />} /> */}
             </Routes>
