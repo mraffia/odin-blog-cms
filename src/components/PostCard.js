@@ -35,6 +35,7 @@ function PostCard({ post }) {
       <div className="card-info-container">
         <div className="card-post-author">{post.author.name}</div>
         <div className="card-post-date">At {dateFormatter(post.timestamp)}</div>
+        <div className="card-post-status" style={post.is_published ? {color: "lightseagreen"} : {color: "coral"}}>{post.is_published ? "Published" : "Unpublished"}</div>
       </div>
     </div>
   );
