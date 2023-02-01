@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   const [posts, setPosts] = useState([]);
   const [postid, setPostid] = useState('63d6a7dfc301e8d2cb8970cb');
-  const [currentPage, setCurrentPage] = useState('allPosts');
+  const [currentPage, setCurrentPage] = useState('All Posts');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -49,15 +49,17 @@ function App() {
         <Nav />
 
         <div className="content">
-          <Sidebar currentPage={currentPage}/>
-          <Routes>
-            <Route path="/" element={<HomePage posts={posts} handleChoosePost={handleChoosePost} handleCurrentPage={handleCurrentPage} isLoading={isLoading} isError={isError} />} />
-            <Route path="/post" element={<PostPage postid={postid} handleCurrentPage={handleCurrentPage} />} />
-            {/* <Route path="/post/create" element={<CreatePostPage />} />
-            <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
-            <Route path="/post/update" element={<DeletePostPage postid={postid} />} />
-            <Route path="/login" element={<LoginPage />} /> */}
-          </Routes>
+          <Sidebar currentPage={currentPage} handleCurrentPage={handleCurrentPage} />
+          <div className="content-page">
+            <Routes>
+              <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
+              <Route path="/post" element={<PostPage postid={postid} />} />
+              {/* <Route path="/post/create" element={<CreatePostPage />} />
+              <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
+              <Route path="/post/update" element={<DeletePostPage postid={postid} />} />
+              <Route path="/login" element={<LoginPage />} /> */}
+            </Routes>
+          </div>
         </div>
 
         <div className="footer">
