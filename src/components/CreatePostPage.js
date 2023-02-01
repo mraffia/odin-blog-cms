@@ -47,7 +47,7 @@ function CreatePostPage({ handleChoosePost }) {
           <input id="post_title" type="text" placeholder="Post Title" name="post_title" required />
 
           <label htmlFor="post_content">Content:</label>
-          <textarea id="post_content" type="textarea" placeholder="Post content" name="post_content" required rows={10} />
+          <textarea id="post_content" type="textarea" placeholder="Post content" name="post_content" required rows={15} />
 
           <label htmlFor="is_published">Publish Status:</label>
           <select id="is_published" type="select" placeholder='Publish status' name="is_published" required>
