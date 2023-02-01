@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar.js';
 import HomePage from './components/HomePage.js';
 import PostPage from './components/PostPage.js';
 import CreatePostPage from './components/CreatePostPage.js';
-import UpdatePostPage from './components/DeletePostPage.js';
+import UpdatePostPage from './components/UpdatePostPage.js';
 import DeletePostPage from './components/DeletePostPage.js';
 import LoginPage from './components/LoginPage.js';
 import './App.css';
@@ -55,8 +55,8 @@ function App() {
               <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
               <Route path="/post" element={<PostPage postid={postid} />} />
               <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
-              {/* <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
-              <Route path="/post/update" element={<DeletePostPage postid={postid} />} />
+              <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
+              {/* <Route path="/post/delete" element={<DeletePostPage postid={postid} />} />
               <Route path="/login" element={<LoginPage />} /> */}
             </Routes>
           </div>
