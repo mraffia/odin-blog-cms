@@ -46,7 +46,7 @@ function App() {
     // basename="/odin-blog"
     <HashRouter>
       <div className="container">
-        <Nav />
+        <Nav handleCurrentPage={handleCurrentPage} />
 
         <div className="content">
           <Sidebar currentPage={currentPage} handleCurrentPage={handleCurrentPage} />
