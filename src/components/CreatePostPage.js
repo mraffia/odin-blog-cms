@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { redirect } from "react-router-dom";
 import '../styles/CreatePostPage.css';
 
-function CreatePostPage({ currentPage, handleChoosePost }) {
+function CreatePostPage({ handleChoosePost }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [createFormError, setCreateFormError] = useState([]);
 
@@ -47,7 +47,7 @@ function CreatePostPage({ currentPage, handleChoosePost }) {
           <input id="post_title" type="text" placeholder="Post Title" name="post_title" required />
 
           <label htmlFor="post_content">Content:</label>
-          <textarea id="post_content" type="textarea" placeholder="Post content" name="post_content" required />
+          <textarea id="post_content" type="textarea" placeholder="Post content" name="post_content" required rows={10} />
 
           <label htmlFor="is_published">Publish Status:</label>
           <select id="is_published" type="select" placeholder='Publish status' name="is_published" required>
@@ -55,7 +55,7 @@ function CreatePostPage({ currentPage, handleChoosePost }) {
             <option value={false}>Unpublished</option>
           </select>
 
-          <button type="submit" className="btn" onClick={(e) => handleCreatePost(e)} disabled={submitDisabled}>Submit</button>
+          <button type="submit" className="btn" onClick={(e) => handleCreatePost(e)} disabled={submitDisabled}>Create</button>
         </form>
       </div>
       {createFormError.length !== 0 ? (

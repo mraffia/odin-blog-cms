@@ -71,7 +71,7 @@
   opacity: 1;
 }
 
-.comment-form-error {
+.create-form-error {
   font-size: 14px;
   font-weight: bold;
   color: red;
