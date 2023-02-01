@@ -1,0 +1,48 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transition: transform .2s;
+  width: 220px;
+  height: 220px;
+  padding: 30px;
+  margin: 15px;
+}
+
+.card-container:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.card-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 75%;
+}
+
+.card-post-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  height: 25%;
+}
+
+.card-post-author {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card-post-date {
+  font-size: 14px;
+}
