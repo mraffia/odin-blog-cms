@@ -4,21 +4,26 @@ import Nav from './components/Nav.js';
 import Sidebar from './components/Sidebar.js';
 import HomePage from './components/HomePage.js';
 import PostPage from './components/PostPage.js';
-import LoginPage from './components/LoginPage.js';
 import CreatePostPage from './components/CreatePostPage.js';
 import UpdatePostPage from './components/DeletePostPage.js';
 import DeletePostPage from './components/DeletePostPage.js';
+import LoginPage from './components/LoginPage.js';
 import './App.css';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [postid, setPostid] = useState('63d6a7dfc301e8d2cb8970cb');
+  const [currentPage, setCurrentPage] = useState('allPosts');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   function handleChoosePost(postid) {
     setPostid(postid);
+  }
+
+  function handleCurrentPage(page) {
+    setCurrentPage(page);
   }
 
   useEffect(() => {
@@ -44,14 +49,14 @@ function App() {
         <Nav />
 
         <div className="content">
-          <Sidebar />
+          <Sidebar currentPage={currentPage}/>
           <Routes>
-            <Route path="/" element={<HomePage posts={posts} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
-            <Route path="/post" element={<PostPage postid={postid} />} />
-            {/* <Route path="/login" element={<LoginPage />} />
-            <Route path="/post/create" element={<CreatePostPage />} />
+            <Route path="/" element={<HomePage posts={posts} handleChoosePost={handleChoosePost} handleCurrentPage={handleCurrentPage} isLoading={isLoading} isError={isError} />} />
+            <Route path="/post" element={<PostPage postid={postid} handleCurrentPage={handleCurrentPage} />} />
+            {/* <Route path="/post/create" element={<CreatePostPage />} />
             <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
-            <Route path="/post/update" element={<DeletePostPage postid={postid} />} /> */}
+            <Route path="/post/update" element={<DeletePostPage postid={postid} />} />
+            <Route path="/login" element={<LoginPage />} /> */}
           </Routes>
         </div>
 
