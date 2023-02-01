@@ -1,0 +1,88 @@
+.update-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.update-title {
+  margin-top: 40px;
+}
+
+.update-form {
+  width: 600px;
+}
+
+.update-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.update-form-container label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.update-form-container input[type=text],
+.update-form-container textarea,
+.update-form-container select {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0 15px 0;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.update-form-container input[type=text]:focus,
+.update-form-container textarea:focus,
+.update-form-container select:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.update-form-container textarea {
+  resize: vertical;
+}
+
+.update-form-container select {
+  width: 150px;
+}
+
+.update-form-container .btn {
+  background-color: lightseagreen;
+  color: white;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 150px;
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.update-form-container .btn:hover {
+  opacity: 1;
+}
+
+.update-form-error {
+  font-size: 14px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 5px;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
