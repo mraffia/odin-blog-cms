@@ -79,14 +79,14 @@ function DeletePostPage({ currentPost }) {
             visible={true}
           />
         ) : (
-          <div className="home-subcontainer">
+          <div className="delete-subcontainer">
             <PostCard post={post} />
+            <form className="delete-form-container" id="delete_form">
+              <input id="postid" type="hidden" name="postid" value={currentPost} required />
+              <button type="submit" className="btn btn-danger" onClick={(e) => handleDeletePost(e)} disabled={submitDisabled}>Delete</button>
+            </form>
           </div>
         )}
-        <form className="delete-form-container" id="delete_form">
-          <input id="postid" type="hidden" name="postid" value={currentPost} required />
-          <button type="submit" className="btn btn-danger" onClick={(e) => handleDeletePost(e)} disabled={submitDisabled}>Delete</button>
-        </form>
       </div>
     </div>
   );
