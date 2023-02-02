@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ThreeDots } from 'react-loader-spinner';
 import '../styles/UpdatePostPage.css';
 
-function UpdatePostPage({ currentPost }) {
+function UpdatePostPage({ currentPost, handlePostsEdited }) {
   const [post, setPost] = useState({
     "_id": "",
     "author": {},
@@ -40,6 +40,7 @@ function UpdatePostPage({ currentPost }) {
         if (data.errors) {
           setUpdateFormError(data.errors);
         } else {
+          handlePostsEdited('update');
           setUpdateFormError([]);
           document.getElementById('update_form').reset();
           navigate("/post");

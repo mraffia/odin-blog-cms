@@ -4,7 +4,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import PostCard from './PostCard.js';
 import '../styles/DeletePostPage.css';
 
-function DeletePostPage({ currentPost }) {
+function DeletePostPage({ currentPost, handlePostsEdited }) {
   const [post, setPost] = useState({
     "_id": "",
     "author": {},
@@ -38,9 +38,9 @@ function DeletePostPage({ currentPost }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setSubmitDisabled(false);
+        handlePostsEdited('delete');
         navigate("/");
+        setSubmitDisabled(false);
       })
       .catch((error) => {
         console.error('Error:', error);

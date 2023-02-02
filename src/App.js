@@ -15,6 +15,7 @@ function App() {
   const [currentPost, setCurrentPost] = useState(localStorage.getItem("current_post") ? localStorage.getItem("current_post") : '63d6a7dfc301e8d2cb8970cb');
   const [currentPage, setCurrentPage] = useState(localStorage.getItem("current_page") ? localStorage.getItem("current_page") : 'All Posts');
   const [currentUser, setCurrentUser] = useState(localStorage.getItem("user_name") ? localStorage.getItem("user_name") : '');
+  const [postsEdited, setPostsEdited] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -31,6 +32,10 @@ function App() {
 
   function handleCurrentUser(user) {
     setCurrentUser(user);
+  }
+
+  function handlePostsEdited(status) {
+    setPostsEdited(status);
   }
 
   function handleLogout() {
@@ -54,7 +59,7 @@ function App() {
         console.error('Error:', error);
         setIsError(true);
       });
-  }, []);
+  }, [postsEdited]);
 
   return (
     // basename="/odin-blog-cms"
@@ -75,9 +80,9 @@ function App() {
                   <Routes>
                     <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleCurrentPost={handleCurrentPost} isLoading={isLoading} isError={isError} />} />
                     <Route path="/post" element={<PostPage currentPost={currentPost} />} />
-                    <Route path="/post/create" element={<CreatePostPage handleCurrentPost={handleCurrentPost} />} />
-                    <Route path="/post/update" element={<UpdatePostPage currentPost={currentPost} />} />
-                    <Route path="/post/delete" element={<DeletePostPage currentPost={currentPost} />} /> 
+                    <Route path="/post/create" element={<CreatePostPage handleCurrentPost={handleCurrentPost} handlePostsEdited={handlePostsEdited} />} />
+                    <Route path="/post/update" element={<UpdatePostPage currentPost={currentPost} handlePostsEdited={handlePostsEdited} />} />
+                    <Route path="/post/delete" element={<DeletePostPage currentPost={currentPost} handlePostsEdited={handlePostsEdited} />} /> 
                   </Routes>
                 </div>
               </div>
