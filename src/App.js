@@ -27,6 +27,9 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(localStorage);
+    console.log(localStorage.getItem("userToken"));
+
     setIsError(false);
     setIsLoading(true);
 
@@ -49,17 +52,25 @@ function App() {
         <Nav handleCurrentPage={handleCurrentPage} />
 
         <div className="content">
-          <Sidebar currentPage={currentPage} handleCurrentPage={handleCurrentPage} />
-          <div className="content-page">
-            <Routes>
-              <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
-              <Route path="/post" element={<PostPage postid={postid} />} />
-              <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
-              <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
-              <Route path="/post/delete" element={<DeletePostPage postid={postid} />} />
-              <Route path="/login" element={<LoginPage />} />
-            </Routes>
-          </div>
+            {!localStorage.getItem("userToken") ? (
+              <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/login" element={<LoginPage />} />
+              </Routes>
+            ) : (
+              <div className="subcontent">
+                <Sidebar currentPage={currentPage} handleCurrentPage={handleCurrentPage} />
+                <div className="content-page">
+                  <Routes>
+                    <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
+                    <Route path="/post" element={<PostPage postid={postid} />} />
+                    <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
+                    <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
+                    <Route path="/post/delete" element={<DeletePostPage postid={postid} />} /> 
+                  </Routes>
+                </div>
+              </div>
+            )}
         </div>
 
         <div className="footer">
