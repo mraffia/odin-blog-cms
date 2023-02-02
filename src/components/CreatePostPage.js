@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../styles/CreatePostPage.css';
 
 function CreatePostPage({ handleCurrentPost, handlePostsEdited }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [createFormError, setCreateFormError] = useState([]);
+
+  const navigate = useNavigate();
 
   function handleCreatePost(e) {
     e.preventDefault();
@@ -31,7 +33,7 @@ function CreatePostPage({ handleCurrentPost, handlePostsEdited }) {
           handlePostsEdited('create');
           setCreateFormError([]);
           document.getElementById('create_form').reset();
-          return redirect("/post");
+          navigate("/post");
         }
         setSubmitDisabled(false);
       })
