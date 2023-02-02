@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ThreeDots } from 'react-loader-spinner';
 import PostCard from './PostCard.js';
 import '../styles/DeletePostPage.css';
@@ -16,6 +16,8 @@ function DeletePostPage({ currentPost }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [isLoadingPost, setIsLoadingPost] = useState(false);
   const [isErrorPost, setIsErrorPost] = useState(false);
+
+  const navigate = useNavigate();
 
   function handleDeletePost(e) {
     e.preventDefault();
@@ -38,7 +40,7 @@ function DeletePostPage({ currentPost }) {
       .then((data) => {
         console.log(data);
         setSubmitDisabled(false);
-        return redirect("/post");
+        navigate("/");
       })
       .catch((error) => {
         console.error('Error:', error);

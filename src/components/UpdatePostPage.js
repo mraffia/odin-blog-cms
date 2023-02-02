@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ThreeDots } from 'react-loader-spinner';
 import '../styles/UpdatePostPage.css';
 
@@ -16,6 +16,8 @@ function UpdatePostPage({ currentPost }) {
   const [isErrorPost, setIsErrorPost] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [updateFormError, setUpdateFormError] = useState([]);
+
+  const navigate = useNavigate();
 
   function handleUpdatePost(e) {
     e.preventDefault();
@@ -40,7 +42,7 @@ function UpdatePostPage({ currentPost }) {
         } else {
           setUpdateFormError([]);
           document.getElementById('update_form').reset();
-          return redirect("/post");
+          navigate("/post");
         }
         setSubmitDisabled(false);
       })
