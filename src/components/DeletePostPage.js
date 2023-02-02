@@ -28,9 +28,8 @@ function DeletePostPage({ currentPost }) {
       console.log(pair);
     }
 
-    fetch('https://mraffia-odin-blog-api.up.railway.app/posts' + currentPost, {
+    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost, {
       method: 'DELETE',
-      body: data,
       headers: {
         'Authorization': 'bearer ' + localStorage.getItem('user_token')
       },
