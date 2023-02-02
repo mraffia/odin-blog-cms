@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [currentPost, setCurrentPost] = useState('63d6a7dfc301e8d2cb8970cb');
+  const [currentPost, setCurrentPost] = useState(localStorage.getItem("current_post") ? localStorage.getItem("current_post") : '63d6a7dfc301e8d2cb8970cb');
   const [currentPage, setCurrentPage] = useState('All Posts');
   const [currentUser, setCurrentUser] = useState('');
 
@@ -20,6 +20,7 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   function handleCurrentPost(currentPost) {
+    localStorage.setItem("current_post", currentPost);
     setCurrentPost(currentPost);
   }
 
@@ -37,8 +38,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(localStorage.getItem("user_name"));
-    console.log(localStorage.getItem("user_token"));
+    console.log(localStorage);
 
     setIsError(false);
     setIsLoading(true);
