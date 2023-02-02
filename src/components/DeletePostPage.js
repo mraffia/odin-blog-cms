@@ -16,6 +16,7 @@ function DeletePostPage({ currentPost, handlePostsEdited }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [isLoadingPost, setIsLoadingPost] = useState(false);
   const [isErrorPost, setIsErrorPost] = useState(false);
+  const [unauthorized, setUnauthorized] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,8 +37,15 @@ function DeletePostPage({ currentPost, handlePostsEdited }) {
         'Authorization': 'bearer ' + localStorage.getItem('user_token')
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.status === 401) {
+          setUnauthorized(true);
+        }
+        return response.json()
+      })
       .then((data) => {
+        console.log(data);
         handlePostsEdited('delete');
         navigate("/");
         setSubmitDisabled(false);
@@ -88,6 +96,11 @@ function DeletePostPage({ currentPost, handlePostsEdited }) {
               <button type="submit" className="btn btn-danger" onClick={(e) => handleDeletePost(e)} disabled={submitDisabled}>Delete</button>
             </form>
           </div>
+        )}
+        {unauthorized ? (
+          <div className="create-form-error">User access token expired. Please logout and re-login to continue deleting this post.</div>
+        ) : (
+          null
         )}
       </div>
     </div>

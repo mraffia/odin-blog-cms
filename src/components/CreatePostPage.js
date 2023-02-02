@@ -5,6 +5,7 @@ import '../styles/CreatePostPage.css';
 function CreatePostPage({ handleCurrentPost, handlePostsEdited }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [createFormError, setCreateFormError] = useState([]);
+  const [unauthorized, setUnauthorized] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,8 +25,15 @@ function CreatePostPage({ handleCurrentPost, handlePostsEdited }) {
         'Authorization': 'bearer ' + localStorage.getItem('user_token')
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.status === 401) {
+          setUnauthorized(true);
+        }
+        return response.json()
+      })
       .then((data) => {
+        console.log(data);
         if (data.errors) {
           setCreateFormError(data.errors);
         } else {
@@ -64,12 +72,18 @@ function CreatePostPage({ handleCurrentPost, handlePostsEdited }) {
           <button type="submit" className="btn" onClick={(e) => handleCreatePost(e)} disabled={submitDisabled}>Create</button>
         </form>
       </div>
+      {unauthorized ? (
+        <div className="create-form-error">User access token expired. Please logout and re-login to continue creating a new post.</div>
+      ) : (
+        null
+      )}
       {createFormError.length !== 0 ? (
         createFormError.map((error, i) => {
           return <div key={i} className="create-form-error">{error.msg}</div>
         })
-        ) : null
-      }
+      ) : ( 
+        null
+      )}
     </div>
   );
 }

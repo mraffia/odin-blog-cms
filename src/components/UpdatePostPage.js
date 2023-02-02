@@ -16,6 +16,7 @@ function UpdatePostPage({ currentPost, handlePostsEdited }) {
   const [isErrorPost, setIsErrorPost] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [updateFormError, setUpdateFormError] = useState([]);
+  const [unauthorized, setUnauthorized] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,8 +36,15 @@ function UpdatePostPage({ currentPost, handlePostsEdited }) {
         'Authorization': 'bearer ' + localStorage.getItem('user_token')
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.status === 401) {
+          setUnauthorized(true);
+        }
+        return response.json()
+      })
       .then((data) => {
+        console.log(data);
         if (data.errors) {
           setUpdateFormError(data.errors);
         } else {
@@ -104,12 +112,18 @@ function UpdatePostPage({ currentPost, handlePostsEdited }) {
           </form>
         </div>
       )}
-        {updateFormError.length !== 0 ? (
-          updateFormError.map((error, i) => {
-            return <div key={i} className="update-form-error">{error.msg}</div>
-          })
-          ) : null
-        }
+      {unauthorized ? (
+        <div className="create-form-error">User access token expired. Please logout and re-login to continue updating this post.</div>
+      ) : (
+        null
+      )}
+      {updateFormError.length !== 0 ? (
+        updateFormError.map((error, i) => {
+          return <div key={i} className="update-form-error">{error.msg}</div>
+        })
+      ) : (
+        null
+      )}
     </div>
   );
 }
