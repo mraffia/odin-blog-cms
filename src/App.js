@@ -19,7 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  function handleChoosePost(currentPost) {
+  function handleCurrentPost(currentPost) {
     setCurrentPost(currentPost);
   }
 
@@ -72,9 +72,9 @@ function App() {
                 <Sidebar currentPage={currentPage} handleCurrentPage={handleCurrentPage} />
                 <div className="content-page">
                   <Routes>
-                    <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
+                    <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleCurrentPost={handleCurrentPost} isLoading={isLoading} isError={isError} />} />
                     <Route path="/post" element={<PostPage currentPost={currentPost} />} />
-                    <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
+                    <Route path="/post/create" element={<CreatePostPage handleCurrentPost={handleCurrentPost} />} />
                     <Route path="/post/update" element={<UpdatePostPage currentPost={currentPost} />} />
                     <Route path="/post/delete" element={<DeletePostPage currentPost={currentPost} />} /> 
                   </Routes>

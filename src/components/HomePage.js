@@ -4,7 +4,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import PostCard from './PostCard.js';
 import '../styles/HomePage.css';
 
-function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) {
+function HomePage({ posts, currentPage, handleCurrentPost, isLoading, isError }) {
   const [postStatus, setPostStatus] = useState('all');
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) 
           {posts.map((post, i) => {
             if (postStatus === 'all') {
               return (
-                <div key={i} onClick={() => handleChoosePost(post._id)}>
+                <div key={i} onClick={() => handleCurrentPost(post._id)}>
                   <Link to="/post" className="post-link">
                     <PostCard post={post} />
                   </Link>
@@ -46,7 +46,7 @@ function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) 
             }
             if (post.is_published !== postStatus) return null;
             return (
-              <div key={i} onClick={() => handleChoosePost(post._id)}>
+              <div key={i} onClick={() => handleCurrentPost(post._id)}>
                 <Link to="/post" className="post-link">
                   <PostCard post={post} />
                 </Link>

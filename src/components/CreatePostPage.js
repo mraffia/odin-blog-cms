@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { redirect } from "react-router-dom";
 import '../styles/CreatePostPage.css';
 
-function CreatePostPage({ handleChoosePost }) {
+function CreatePostPage({ handleCurrentPost }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [createFormError, setCreateFormError] = useState([]);
 
@@ -24,7 +24,7 @@ function CreatePostPage({ handleChoosePost }) {
         if (data.errors) {
           setCreateFormError(data.errors);
         } else {
-          handleChoosePost(data.post._id);
+          handleCurrentPost(data.post._id);
           setCreateFormError([]);
           document.getElementById('create_form').reset();
           redirect("/post");
