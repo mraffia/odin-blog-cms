@@ -13,18 +13,19 @@ import './App.css';
 function App() {
   const [posts, setPosts] = useState([]);
   const [currentPost, setCurrentPost] = useState(localStorage.getItem("current_post") ? localStorage.getItem("current_post") : '63d6a7dfc301e8d2cb8970cb');
-  const [currentPage, setCurrentPage] = useState('All Posts');
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentPage, setCurrentPage] = useState(localStorage.getItem("current_page") ? localStorage.getItem("current_page") : 'All Posts');
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem("user_name") ? localStorage.getItem("user_name") : '');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  function handleCurrentPost(currentPost) {
-    localStorage.setItem("current_post", currentPost);
-    setCurrentPost(currentPost);
+  function handleCurrentPost(post) {
+    localStorage.setItem("current_post", post);
+    setCurrentPost(post);
   }
 
   function handleCurrentPage(page) {
+    localStorage.setItem("current_page", page);
     setCurrentPage(page);
   }
 
