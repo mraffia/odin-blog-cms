@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import '../styles/PostPage.css';
 
-function PostPage({ postid }) {
+function PostPage({ currentPost }) {
   const [post, setPost] = useState({
     "_id": "",
     "author": {},
@@ -71,7 +71,7 @@ function PostPage({ postid }) {
     setIsErrorPost(false);
     setIsLoadingPost(true);
 
-    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + postid)
+    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost)
       .then((response) => response.json())
       .then((data) => {
         setPost(data.post);
@@ -118,7 +118,7 @@ function PostPage({ postid }) {
           <button className="comment-form-open" onClick={() => toggleCommentFormDisplay()}>Post a comment</button>
           <div className="comment-form-popup" style={{ display: commentFormDisplay }}>
             <form className="comment-form-container" id="comment_form">
-              <input id="post" type="hidden" name="post" value={postid} required />
+              <input id="post" type="hidden" name="post" value={currentPost} required />
 
               <label htmlFor="comment_author">Name:</label>
               <input id="comment_author" type="text" placeholder="Your name" name="comment_author" required />

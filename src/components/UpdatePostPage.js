@@ -3,7 +3,7 @@ import { redirect } from "react-router-dom";
 import { ThreeDots } from 'react-loader-spinner';
 import '../styles/UpdatePostPage.css';
 
-function UpdatePostPage({ postid }) {
+function UpdatePostPage({ currentPost }) {
   const [post, setPost] = useState({
     "_id": "",
     "author": {},
@@ -26,7 +26,7 @@ function UpdatePostPage({ postid }) {
       data.append(pair[0], pair[1]);
     }
 
-    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + postid, {
+    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost, {
       method: 'PUT',
       body: data,
     })
@@ -50,7 +50,7 @@ function UpdatePostPage({ postid }) {
     setIsErrorPost(false);
     setIsLoadingPost(true);
 
-    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + postid)
+    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost)
       .then((response) => response.json())
       .then((data) => {
         setPost(data.post);

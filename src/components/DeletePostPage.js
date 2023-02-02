@@ -4,7 +4,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import PostCard from './PostCard.js';
 import '../styles/DeletePostPage.css';
 
-function DeletePostPage({ postid }) {
+function DeletePostPage({ currentPost }) {
   const [post, setPost] = useState({
     "_id": "",
     "author": {},
@@ -26,7 +26,7 @@ function DeletePostPage({ postid }) {
       data.append(pair[0], pair[1]);
     }
 
-    fetch('https://mraffia-odin-blog-api.up.railway.app/posts' + postid, {
+    fetch('https://mraffia-odin-blog-api.up.railway.app/posts' + currentPost, {
       method: 'DELETE',
       body: data,
     })
@@ -44,7 +44,7 @@ function DeletePostPage({ postid }) {
     setIsErrorPost(false);
     setIsLoadingPost(true);
 
-    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + postid)
+    fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost)
       .then((response) => response.json())
       .then((data) => {
         setPost(data.post);
@@ -79,7 +79,7 @@ function DeletePostPage({ postid }) {
           </div>
         )}
         <form className="delete-form-container" id="delete_form">
-          <input id="postid" type="hidden" name="postid" value={postid} required />
+          <input id="postid" type="hidden" name="postid" value={currentPost} required />
           <button type="submit" className="btn btn-danger" onClick={(e) => handleDeletePost(e)} disabled={submitDisabled}>Delete</button>
         </form>
       </div>

@@ -12,15 +12,15 @@ import './App.css';
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [postid, setPostid] = useState('63d6a7dfc301e8d2cb8970cb');
+  const [currentPost, setCurrentPost] = useState('63d6a7dfc301e8d2cb8970cb');
   const [currentPage, setCurrentPage] = useState('All Posts');
   const [currentUser, setCurrentUser] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  function handleChoosePost(postid) {
-    setPostid(postid);
+  function handleChoosePost(currentPost) {
+    setCurrentPost(currentPost);
   }
 
   function handleCurrentPage(page) {
@@ -62,7 +62,7 @@ function App() {
         <Nav handleCurrentPage={handleCurrentPage} handleLogout={handleLogout} />
 
         <div className="content">
-            {!localStorage.getItem("user_token") ? (
+            {localStorage.getItem("user_token") ? (
               <Routes>
                 <Route path="/" element={<LoginPage handleCurrentUser={handleCurrentUser} />} />
                 <Route path="/login" element={<LoginPage handleCurrentUser={handleCurrentUser} />} />
@@ -73,10 +73,10 @@ function App() {
                 <div className="content-page">
                   <Routes>
                     <Route path="/" element={<HomePage posts={posts} currentPage={currentPage} handleChoosePost={handleChoosePost} isLoading={isLoading} isError={isError} />} />
-                    <Route path="/post" element={<PostPage postid={postid} />} />
+                    <Route path="/post" element={<PostPage currentPost={currentPost} />} />
                     <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
-                    <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
-                    <Route path="/post/delete" element={<DeletePostPage postid={postid} />} /> 
+                    <Route path="/post/update" element={<UpdatePostPage currentPost={currentPost} />} />
+                    <Route path="/post/delete" element={<DeletePostPage currentPost={currentPost} />} /> 
                   </Routes>
                 </div>
               </div>
