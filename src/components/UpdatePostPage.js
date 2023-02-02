@@ -29,6 +29,9 @@ function UpdatePostPage({ currentPost }) {
     fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost, {
       method: 'PUT',
       body: data,
+      headers: {
+        'Authorization': 'bearer ' + localStorage.getItem('user_token')
+      },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -37,7 +40,7 @@ function UpdatePostPage({ currentPost }) {
         } else {
           setUpdateFormError([]);
           document.getElementById('update_form').reset();
-          redirect("/post");
+          return redirect("/post");
         }
         setSubmitDisabled(false);
       })

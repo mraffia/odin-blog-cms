@@ -18,6 +18,9 @@ function CreatePostPage({ handleCurrentPost }) {
     fetch('https://mraffia-odin-blog-api.up.railway.app/posts', {
       method: 'POST',
       body: data,
+      headers: {
+        'Authorization': 'bearer ' + localStorage.getItem('user_token')
+      },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -27,7 +30,7 @@ function CreatePostPage({ handleCurrentPost }) {
           handleCurrentPost(data.post._id);
           setCreateFormError([]);
           document.getElementById('create_form').reset();
-          redirect("/post");
+          return redirect("/post");
         }
         setSubmitDisabled(false);
       })

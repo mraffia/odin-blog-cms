@@ -24,16 +24,22 @@ function DeletePostPage({ currentPost }) {
     const data = new URLSearchParams();
     for (const pair of new FormData(document.getElementById('delete_form'))) {
       data.append(pair[0], pair[1]);
+
+      console.log(pair);
     }
 
     fetch('https://mraffia-odin-blog-api.up.railway.app/posts' + currentPost, {
       method: 'DELETE',
       body: data,
+      headers: {
+        'Authorization': 'bearer ' + localStorage.getItem('user_token')
+      },
     })
       .then((response) => response.json())
       .then((data) => {
-        redirect("/post");
+        console.log(data);
         setSubmitDisabled(false);
+        return redirect("/post");
       })
       .catch((error) => {
         console.error('Error:', error);
