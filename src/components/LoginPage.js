@@ -20,7 +20,6 @@ function LoginPage({ handleCurrentUser }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.message === 'Something is not right') {
           setLoginFormError(true);
         } else {
@@ -30,8 +29,6 @@ function LoginPage({ handleCurrentUser }) {
           setLoginFormError(false);
           document.getElementById('login_form').reset();
         }
-        console.log(localStorage.getItem("user_name"));
-        console.log(localStorage.getItem("user_token"));
         setSubmitDisabled(false);
       })
       .catch((error) => {

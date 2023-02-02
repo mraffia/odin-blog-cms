@@ -26,14 +26,12 @@ function CreatePostPage({ handleCurrentPost, handlePostsEdited }) {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 401) {
           setUnauthorized(true);
         }
         return response.json()
       })
       .then((data) => {
-        console.log(data);
         if (data.errors) {
           setCreateFormError(data.errors);
         } else {

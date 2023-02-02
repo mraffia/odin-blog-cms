@@ -37,14 +37,12 @@ function UpdatePostPage({ currentPost, handlePostsEdited }) {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 401) {
           setUnauthorized(true);
         }
         return response.json()
       })
       .then((data) => {
-        console.log(data);
         if (data.errors) {
           setUpdateFormError(data.errors);
         } else {

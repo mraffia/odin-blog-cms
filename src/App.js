@@ -44,8 +44,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(localStorage);
-
     setIsError(false);
     setIsLoading(true);
 

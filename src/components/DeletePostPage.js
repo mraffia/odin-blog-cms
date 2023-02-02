@@ -27,8 +27,6 @@ function DeletePostPage({ currentPost, handlePostsEdited }) {
     const data = new URLSearchParams();
     for (const pair of new FormData(document.getElementById('delete_form'))) {
       data.append(pair[0], pair[1]);
-
-      console.log(pair);
     }
 
     fetch('https://mraffia-odin-blog-api.up.railway.app/posts/' + currentPost, {
@@ -38,14 +36,12 @@ function DeletePostPage({ currentPost, handlePostsEdited }) {
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 401) {
           setUnauthorized(true);
         }
         return response.json()
       })
       .then((data) => {
-        console.log(data);
         handlePostsEdited('delete');
         navigate("/");
         setSubmitDisabled(false);
