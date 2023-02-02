@@ -63,7 +63,7 @@ function App() {
         <Nav handleCurrentPage={handleCurrentPage} handleLogout={handleLogout} />
 
         <div className="content">
-            {localStorage.getItem("user_token") ? (
+            {!localStorage.getItem("user_token") ? (
               <Routes>
                 <Route path="/" element={<LoginPage handleCurrentUser={handleCurrentUser} />} />
                 <Route path="/login" element={<LoginPage handleCurrentUser={handleCurrentUser} />} />
