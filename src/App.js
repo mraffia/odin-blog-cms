@@ -14,6 +14,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [postid, setPostid] = useState('63d6a7dfc301e8d2cb8970cb');
   const [currentPage, setCurrentPage] = useState('All Posts');
+  const [currentUser, setCurrentUser] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -24,6 +25,15 @@ function App() {
 
   function handleCurrentPage(page) {
     setCurrentPage(page);
+  }
+
+  function handleCurrentUser(user) {
+    setCurrentUser(user);
+  }
+
+  function handleLogout() {
+    localStorage.clear();
+    setCurrentUser('');
   }
 
   useEffect(() => {
@@ -49,13 +59,13 @@ function App() {
     // basename="/odin-blog-cms"
     <HashRouter>
       <div className="container">
-        <Nav handleCurrentPage={handleCurrentPage} />
+        <Nav handleCurrentPage={handleCurrentPage} handleLogout={handleLogout} />
 
         <div className="content">
             {!localStorage.getItem("user_token") ? (
               <Routes>
-                <Route path="/" element={<LoginPage />} />
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<LoginPage handleCurrentUser={handleCurrentUser} />} />
+                <Route path="/login" element={<LoginPage handleCurrentUser={handleCurrentUser} />} />
               </Routes>
             ) : (
               <div className="subcontent">
