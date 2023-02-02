@@ -1,0 +1,78 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.login-title {
+  margin-top: 40px;
+}
+
+.login-form {
+  width: 300px;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.login-form-container label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.login-form-container input[type=text],
+.login-form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0 15px 0;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.login-form-container input[type=text]:focus,
+.login-form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.login-form-container .btn {
+  background-color: lightseagreen;
+  color: white;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 150px;
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.login-form-container .btn:hover {
+  opacity: 1;
+}
+
+.login-form-error {
+  font-size: 14px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
