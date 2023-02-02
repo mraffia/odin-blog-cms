@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
-import '../styles/HomePage.css';
 import PostCard from './PostCard.js';
+import '../styles/HomePage.css';
 
 function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) {
   const [postStatus, setPostStatus] = useState('all');
@@ -39,7 +39,7 @@ function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) 
               return (
                 <div key={i} onClick={() => handleChoosePost(post._id)}>
                   <Link to="/post" className="post-link">
-                    <PostCard post={post} handleChoosePost={handleChoosePost} />
+                    <PostCard post={post} />
                   </Link>
                 </div>
               )
@@ -48,7 +48,7 @@ function HomePage({ posts, currentPage, handleChoosePost, isLoading, isError }) 
             return (
               <div key={i} onClick={() => handleChoosePost(post._id)}>
                 <Link to="/post" className="post-link">
-                  <PostCard post={post} handleChoosePost={handleChoosePost} />
+                  <PostCard post={post} />
                 </Link>
               </div>
             )
