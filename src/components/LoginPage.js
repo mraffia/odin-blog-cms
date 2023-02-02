@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { redirect } from "react-router-dom";
+import React, { useState } from 'react';
 import '../styles/LoginPage.css';
 
 function LoginPage() {
@@ -29,7 +28,7 @@ function LoginPage() {
           localStorage.setItem("user_token", data.token);
           setLoginFormError(false);
           document.getElementById('login_form').reset();
-          redirect("/");
+          window.location.reload();
         }
         console.log(localStorage.getItem("user_name"));
         console.log(localStorage.getItem("user_token"));
