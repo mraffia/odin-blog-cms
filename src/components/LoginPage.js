@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/LoginPage.css';
 
-function LoginPage() {
+function LoginPage({ handleCurrentUser }) {
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [loginFormError, setLoginFormError] = useState(false);
 
@@ -26,9 +26,9 @@ function LoginPage() {
         } else {
           localStorage.setItem("user_name", data.user.name);
           localStorage.setItem("user_token", data.token);
+          handleCurrentUser(data.user.name);
           setLoginFormError(false);
           document.getElementById('login_form').reset();
-          window.location.reload();
         }
         console.log(localStorage.getItem("user_name"));
         console.log(localStorage.getItem("user_token"));
