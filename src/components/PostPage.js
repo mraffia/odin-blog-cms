@@ -138,7 +138,7 @@ function PostPage({ currentPost }) {
             null
           )}
 
-          <h2 className="post-comment-heading">Comments</h2>
+          <h2 className="post-comment-heading">Comments ({comments.length})</h2>
           <div className="comment-list-container">
             {comments.length !== 0 ? 
               comments.map((comment, i) => {
