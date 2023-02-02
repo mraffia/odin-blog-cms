@@ -25,12 +25,14 @@ function LoginPage() {
         if (data.message === 'Something is not right') {
           setLoginFormError(true);
         } else {
-          localStorage.setItem("userToken", data.token);
+          localStorage.setItem("user_name", data.user.name);
+          localStorage.setItem("user_token", data.token);
           setLoginFormError(false);
           document.getElementById('login_form').reset();
           redirect("/");
         }
-        console.log(localStorage.getItem("userToken"));
+        console.log(localStorage.getItem("user_name"));
+        console.log(localStorage.getItem("user_token"));
         setSubmitDisabled(false);
       })
       .catch((error) => {

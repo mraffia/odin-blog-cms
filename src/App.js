@@ -27,8 +27,8 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(localStorage);
-    console.log(localStorage.getItem("userToken"));
+    console.log(localStorage.getItem("user_name"));
+    console.log(localStorage.getItem("user_token"));
 
     setIsError(false);
     setIsLoading(true);
@@ -52,7 +52,7 @@ function App() {
         <Nav handleCurrentPage={handleCurrentPage} />
 
         <div className="content">
-            {!localStorage.getItem("userToken") ? (
+            {!localStorage.getItem("user_token") ? (
               <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/login" element={<LoginPage />} />
