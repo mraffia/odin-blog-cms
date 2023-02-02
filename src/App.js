@@ -56,8 +56,8 @@ function App() {
               <Route path="/post" element={<PostPage postid={postid} />} />
               <Route path="/post/create" element={<CreatePostPage handleChoosePost={handleChoosePost} />} />
               <Route path="/post/update" element={<UpdatePostPage postid={postid} />} />
-              {/* <Route path="/post/delete" element={<DeletePostPage postid={postid} />} />
-              <Route path="/login" element={<LoginPage />} /> */}
+              <Route path="/post/delete" element={<DeletePostPage postid={postid} />} />
+              {/* <Route path="/login" element={<LoginPage />} /> */}
             </Routes>
           </div>
         </div>
